@@ -1,0 +1,59 @@
+<nav class=" border-gray-200 dark:border-gray-700 sticky top-0 z-30 backdrop-blur-lg backdrop-brightness-150 ">
+    <div class="max-w-screen-xl flex flex-col lg:flex-row  items-center w-full mx-auto py-4">
+        <div class="max-w-screen-xl flex justify-around md:justify-between items-center w-full mx-auto py-4">
+            <a href="/" class="flex items-center ">
+                <span class="self-center flex text-2xl font-semibold whitespace-nowrap items-center text-black">
+                    <!-- <h3 class="text-primary-500">Quiz</h3> -->
+                    <img ngClass="w-24" src='../../../assets/logoquiz.png' />
+                    Minds
+                </span>
+            </a>
+
+            <button data-collapse-toggle="navbar-dropdown" type="button"
+                class="animate- inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 "
+                aria-controls="navbar-dropdown" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd"
+                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                        clipRule="evenodd"></path>
+                </svg>
+
+            </button>
+        </div>
+        <div class='lg:block w-fit transition-all'>
+            <ul
+                class="flex flex-col font-extrabold p-4 md:p-0 mt-4 border border-gray-100  md:flex-row items-center md:space-x-8 md:mt-0 md:border-0 justify-center">
+                <li>
+                    <a routerLink="/"
+                        class="py-3 pl-3 pr-4 rounded text-black hover:text-primary-500  hover:bg-white hover:bg-opacity-40 ">Home</a>
+                </li>
+                <li>
+                    <a routerLink="/subject"
+                        class="py-3 pl-3 pr-4 rounded text-black hover:text-primary-500  hover:bg-white hover:bg-opacity-40 ">Subject</a>
+                </li>
+                <li>
+                    <a routerLink="/questions"
+                        class="py-3 pl-3 pr-4 rounded text-black hover:text-primary-500  hover:bg-white hover:bg-opacity-40 ">Question</a>
+                </li>
+                <li>
+                    <a routerLink="/answer"
+                        class="py-3 pl-3 pr-4 rounded text-black hover:text-primary-500  hover:bg-white hover:bg-opacity-40 ">Answer</a>
+                </li>
+                <li>
+                    <a routerLink="/level"
+                        class="py-3 pl-3 pr-4 rounded text-black hover:text-primary-500  hover:bg-white hover:bg-opacity-40 ">level</a>
+                </li>
+                <li>
+                    <a routerLink="/media"
+                        class="py-3 pl-3 pr-4 rounded text-black hover:text-primary-500  hover:bg-white hover:bg-opacity-40 ">media</a>
+                </li>
+                <li>
+                    <app-button-box text="hamza" field="check" (click)="createSubject()"></app-button-box>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
