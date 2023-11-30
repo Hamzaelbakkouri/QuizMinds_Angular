@@ -1,6 +1,8 @@
+import { switchMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SubjectType } from 'src/app/Types/SubjectType';
+import { Observable } from 'rxjs';
+import { SubjectType, createSubjectType } from 'src/app/Models/SubjectType';
 
 @Injectable({
   providedIn: 'root'
@@ -11,25 +13,25 @@ export class SubjectServiceService {
 
   constructor(private http: HttpClient) { }
 
-  createSubject(subject: SubjectType) {
+  createSubject(subject: createSubjectType): Observable<SubjectType> {
     const url = `${this.BaseUrl}/insert`;
-    this.http.post<SubjectType>(url, subject).subscribe(data => {
-      console.log(data);
-    });
+    return this.http.post<SubjectType>(url, subject);
   }
 
-  fetchAllSubjects(): any {
+  fetchAllSubjects(): Observable<SubjectType[]> {
     const url = `${this.BaseUrl}/getall`;
-    this.http.get<any>(url).subscribe(data => {
-      return data;
-      console.log(data);
-      
-    })
+    return this.http.get<SubjectType[]>(url);
   }
 
-  deleteSubject() {
+  deleteSubject(id: string): Observable<string> {
+    const url = `${this.BaseUrl}/delete/${id}`;
+    return this.http.delete<string>(url);
   }
 
-  updateSubject() {
+  updateSubject(subject: SubjectType): Observable<SubjectType[]> {
+    const url = `${this.BaseUrl}/update`;
+    return this.http.put(url, subject).pipe(
+      switchMap(() => this.fetchAllSubjects()),
+    );
   }
 }
