@@ -7,28 +7,19 @@ import { Question } from 'src/app/Models/QuestionType';
   providedIn: 'root'
 })
 export class QuestionService {
-
-  private BaseUrl = 'http://localhost:8080/api/question';
-
-  constructor(private http: HttpClient) { }
-
-  createSubject(subject: Question): Observable<Question> {
-    const url = `${this.BaseUrl}/insert`;
-    return this.http.post<Question>(url, subject);
+  private url = 'http://localhost:8080/api/question';
+  constructor(private http: HttpClient) {
   }
-
-  fetchAllSubjects(): Observable<Question[]> {
-    const url = `${this.BaseUrl}/getall`;
-    return this.http.get<Question[]>(url);
+  public findAll(): Observable<any> {
+    return this.http.get<any>(`${this.url}?page=0&size=50`);
   }
-
-  deleteSubject(id: string): Observable<string> {
-    const url = `${this.BaseUrl}/delete/${id}`;
-    return this.http.delete<string>(url);
+  public save(question: Question): Observable<Question> {
+    return this.http.post<Question>(this.url, question);
   }
-
-  updateSubject(subject: Question): Observable<Question[]> {
-    const url = `${this.BaseUrl}/update`;
-    return this.http.put<Question[]>(url, subject);
+  public update(question: Question): Observable<Question> {
+    return this.http.put<Question>(this.url + "/" + question.id, question);
+  }
+  public delete(id: number): Observable<Question> {
+    return this.http.delete<Question>(this.url + "/" + id);
   }
 }

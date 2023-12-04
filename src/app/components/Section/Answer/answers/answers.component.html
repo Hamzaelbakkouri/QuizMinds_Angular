@@ -1,0 +1,63 @@
+<div class="sm:px-6 m-12">
+    <div class="sm:flex sm:items-center">
+        <div class="sm:flex-auto">
+            <h1 class="text-xl font-semibold text-gray-900 uppercase">Answers</h1>
+        </div>
+        <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+            <button type="button" (click)="openCreatePopup()"
+                class="inline-flex items-center justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 uppercase sm:w-auto">Add
+                answer</button>
+        </div>
+    </div>
+    <div class="mt-8 flex flex-col">
+        <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                    <table class="min-w-full divide-y divide-gray-300">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col"
+                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">id
+                                </th>
+                                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Answer
+                                </th>
+                                <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                                    <span class="">action</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let item of Answers; let idx = index" class="divide-y divide-gray-200 bg-white">
+                            <tr>
+                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                    {{item.id}}
+                                </td>
+                                <td class="text-sm text-gray-500"><p class="text-green-700 bg-green-100 px-2 py-2 rounded-xl font-semibold w-28 text-center">{{item.response}}</p></td>
+                                <td
+                                    class="flex justify-center items-center text-sm font-medium">
+                                    <div class="flex gap-6 pt-3">
+                                        <button *ngIf="item.id" (click)="openUpdatePopup(item.id, idx)">
+                                            <ng-icon name="ionPencil" class="text-blue-900 text-xl"></ng-icon>
+                                        </button>
+                                        <button *ngIf="item.id" (click)="openPopup(item.id , idx)">
+                                            <ng-icon name="ionBackspaceSharp" class="text-red-700 text-2xl"></ng-icon>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-create-answer *ngIf="isCreatePopupOpen" (dataEvent)="receiveData($event)"
+    (closeCreatePopup)="closeCreatePopup()"></app-create-answer>
+
+<app-confirm-answer *ngIf="isPopupOpen" (deleteEvent)="confirmDelete()" (closePopup)="closePopup()"
+    title="Delete Subject" message="confirm that you want to delete this subject"
+    submitTitle="confirm"></app-confirm-answer>
+
+<app-update-answer *ngIf="isUpdatePopupOpen" (dataEvent)="receiveUpdateData($event)"
+    (closeUpdatePopup)="closeUpdatePopup()"></app-update-answer>

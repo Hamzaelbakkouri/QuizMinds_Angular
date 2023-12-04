@@ -3,6 +3,9 @@
 
 <app-create *ngIf="isCreatePopupOpen" (dataEvent)="receiveData($event)" (closeCreatePopup)="closeCreatePopup()"
     [subjectData]="subjects"></app-create>
+
+<app-update *ngIf="isUpdatePopupOpen" (dataEvent)="receiveUpdateData($event)" (closeUpdatePopup)="closeUpdatePopup()"
+    [subjectData]="subjects"></app-update>
 <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6 m-14">
     <div class="-ml-4 -mt-2 flex flex-wrap items-center justify-between sm:flex-nowrap">
         <div class="ml-4 mt-2">
@@ -16,7 +19,7 @@
     </div>
 </div>
 <div class="pb-28">
-    <div *ngFor="let item of subjects" class="overflow-hidden bg-white shadow sm:rounded-md m-14">
+    <div *ngFor="let item of subjects; let idx = index" class="overflow-hidden bg-white shadow sm:rounded-md m-14">
         <ul role="list" class="divide-y divide-gray-200">
             <li>
                 <div class="block hover:bg-gray-50">
@@ -24,15 +27,15 @@
                         <div class="flex min-w-0 flex-1 items-center">
                             <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
                                 <div>
-                                    <p class="truncate text-sm font-medium text-green-700">{{item.title}}</p>
+                                    <p class="truncate text-sm font-medium text-green-700">{{item.name}}</p>
                                     <p class="mt-2 flex items-center text-sm text-gray-500 gap-2">
                                         <ng-icon name="bootstrapCalendarCheckFill" class="text-gray-400"></ng-icon>
-                                        <span class="truncate">{{item.title}}</span>
+                                        <span class="truncate">{{item.name}}</span>
                                     </p>
                                 </div>
                                 <div class="hidden md:block">
                                     <div>
-                                        <p *ngIf="item.subject != null"
+                                        <p *ngIf="item.top != null"
                                             class="mt-2 flex items-center text-sm text-gray-500">
                                             <svg class="mr-1.5 h-5 w-5 flex-shrink-0 text-green-400"
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -41,9 +44,9 @@
                                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
                                                     clip-rule="evenodd" />
                                             </svg>
-                                            has subject parent : {{item.subject.title}}
+                                            has subject parent : {{item.top.name}}
                                         </p>
-                                        <p *ngIf="item.subject == null"
+                                        <p *ngIf="item.top == null"
                                             class="mt-2 flex items-center text-sm text-gray-500">
                                             <svg class="mr-1.5 h-5 w-5 flex-shrink-0 text-red-400"
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -60,11 +63,12 @@
                         </div>
                         <div class="flex gap-6 items-center">
                             <button>
-                                <ng-icon name="ionPencil" class="text-blue-900 text-xl"></ng-icon>
+                                <ng-icon *ngIf="item.id" name="ionPencil" class="text-blue-900 text-xl"
+                                    (click)="openUpdatePopup(item.id, idx)"></ng-icon>
                             </button>
                             <button>
                                 <ng-icon *ngIf="item.id" name="ionBackspaceSharp" class="text-red-700 text-2xl"
-                                    (click)="openPopup(item.id)"></ng-icon>
+                                    (click)="openPopup(item.id, idx)"></ng-icon>
                             </button>
                         </div>
                     </div>

@@ -29,18 +29,19 @@
                                     <label for="first-name"
                                         class="block text-sm font-medium text-gray-700">Title</label>
                                     <div class="mt-1">
-                                        <input type="text" name="title" [(ngModel)]="formData.title" id="title"
+                                        <input type="text" name="title" [(ngModel)]="formData.name" id="title"
                                             placeholder="title" autocomplete="given-name"
                                             class="px-4 block w-full rounded-md border-gray-100 border-2 shadow-sm focus:border-black focus:ring-black sm:text-sm py-2">
                                     </div>
                                 </div>
 
                                 <div class="sm:col-span-3">
-                                    <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+                                    <label for="country" class="block text-sm font-medium text-gray-700">Subject</label>
                                     <div class="mt-1">
-                                        <select id="subject" [(ngModel)]="formData.subject" name="subject"
+                                        <select id="subject" [(ngModel)]="formData.top" name="subject"
                                             class="border-gray-100 border-2 block w-full rounded-md shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm py-2">
-                                            <option *ngFor="let item of subjectData" class="py-2" [ngValue]="item.id">{{ item.title }}</option>
+                                            <option *ngFor="let item of subjectData" class="py-2"
+                                                [ngValue]="{id :item.id}">{{ item.name }}</option>
                                         </select>
                                     </div>
                                 </div>

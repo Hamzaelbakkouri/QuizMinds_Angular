@@ -11,6 +11,7 @@ export class CreateComponent {
   @Output() closeCreatePopup: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() subjectData: SubjectType[] = [];
   @Output() dataEvent = new EventEmitter<any>();
+item: any;
 
   constructor(private subjectService: SubjectServiceService) { }
 
@@ -19,8 +20,8 @@ export class CreateComponent {
   }
 
   formData: createSubjectType = {
-    title: '',
-    subject: null
+    name: '',
+    top: null,	
   };
 
 
@@ -28,15 +29,12 @@ export class CreateComponent {
     this.createSubject(this.formData);
   }
 
-  createSubject(subject: createSubjectType): void {
-    this.subjectService.createSubject(subject).subscribe((data: SubjectType) => {
-      // console.log(data);
-      this.dataEvent.emit(data);
-      // console.log(this.dataEvent);
-      
+  createSubject(subject: any): void {
+    this.subjectService.createSubject(subject).subscribe((data: any) => {
+      this.dataEvent.emit(data.subject);
     });
-  
-    //this.closeCreatePopup.emit(false);
   }
+
+  
 
 }
