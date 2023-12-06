@@ -29,7 +29,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { MediaPopComponent } from './components/Section/Question/media-pop/media-pop.component';
-
+import { LevelComponent } from './components/Section/Level/level/level.component';
+import { LevelCreateComponent } from './components/Section/Level/level-create/level-create.component';
+import { LevelConfirmComponent } from './components/Section/Level/level-confirm/level-confirm.component';
+import { LevelUpdateComponent } from './components/Section/Level/level-update/level-update.component';
+import { bootstrapImages } from '@ng-icons/bootstrap-icons';
+import { QuizComponent } from './components/Section/Quiz/quiz/quiz.component';
+import { QuizCreateComponent } from './components/Section/Quiz/quiz-create/quiz-create.component';
+import { QuizConfirmComponent } from './components/Section/Quiz/quiz-confirm/quiz-confirm.component';
+import { QuizUpdateComponent } from './components/Section/Quiz/quiz-update/quiz-update.component';
 
 @NgModule({
   declarations: [
@@ -50,13 +58,21 @@ import { MediaPopComponent } from './components/Section/Question/media-pop/media
     QuestionConfirmComponent,
     QuestionCreateComponent,
     QuestionUpdateComponent,
-    MediaPopComponent
+    MediaPopComponent,
+    LevelComponent,
+    LevelCreateComponent,
+    LevelConfirmComponent,
+    LevelUpdateComponent,
+    QuizComponent,
+    QuizCreateComponent,
+    QuizConfirmComponent,
+    QuizUpdateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgIconsModule.withIcons({ ionBackspaceSharp, ionPencil, bootstrapCalendarCheckFill, bootstrapBell }),
+    NgIconsModule.withIcons({ ionBackspaceSharp, ionPencil, bootstrapCalendarCheckFill, bootstrapBell, bootstrapImages }),
     FormsModule,
     MatSlideToggleModule,
     MatSnackBarModule,
@@ -65,7 +81,7 @@ import { MediaPopComponent } from './components/Section/Question/media-pop/media
     AutoCompleteModule,
     BrowserModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,7 +9,7 @@
     [subjectData]="Questions"></app-update> -->
 <app-media-pop *ngIf="isMediaPopupOpen" (dataEventMedia)="receiveMeidaData($event)"
     (closeMediaPopup)="closeMediaPopup()"></app-media-pop>
-    
+
 <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6 m-14">
     <div class="-ml-4 -mt-2 flex flex-wrap items-center justify-between sm:flex-nowrap">
         <div class="ml-4 mt-2">
@@ -22,7 +22,7 @@
         </div>
     </div>
 </div>
-<div class="pb-28">
+<div class="pb-28 pt-0 p-14">
     <div *ngFor="let item of Questions; let idx = index" class="overflow-hidden bg-white shadow sm:rounded-md m-14">
         <ul role="list" class="divide-y divide-gray-200">
             <li>
@@ -60,8 +60,11 @@
                         </div>
                         <div class="flex gap-6 items-center">
                             <button>
-                                <ng-icon *ngIf="item.id" name="ionPencil" class="text-blue-900 text-xl"
+                                <ng-icon *ngIf="item.id" name="ionPencil" class="text-blue-800 text-xl"
                                     (click)="openUpdatePopup(item.id, idx)"></ng-icon>
+                            </button>
+                            <button (click)="openMediaPopup(item.media!)">
+                                <ng-icon name="bootstrapImages" class="text-gray-800 text-xl"></ng-icon>
                             </button>
                             <button>
                                 <ng-icon *ngIf="item.id" name="ionBackspaceSharp" class="text-red-700 text-2xl"

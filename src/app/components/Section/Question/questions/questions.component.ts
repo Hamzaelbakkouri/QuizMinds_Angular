@@ -1,8 +1,9 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { QuestionService } from './../../../../services/Question/question.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Question } from 'src/app/Models/QuestionType';
 import { Media } from 'src/app/Models/Media';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-questions',
@@ -20,6 +21,7 @@ export class QuestionsComponent implements OnInit {
   idx: number = 0;
   idToDelete: number = 0;
   deleteMessage: string = '';
+  sendMediaData: EventEmitter<Media[]> = new EventEmitter<Media[]>();
 
 
   constructor(private questionService: QuestionService, private snackBar: MatSnackBar) { }
@@ -33,8 +35,9 @@ export class QuestionsComponent implements OnInit {
   }
 
   // create Media popup
-  openMediaPopup() {
+  openMediaPopup(media: Media[]) {
     this.isMediaPopupOpen = true;
+    this.sendMediaData.emit(media);
   }
 
   closeMediaPopup() {

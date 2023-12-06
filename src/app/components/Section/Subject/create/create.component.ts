@@ -19,9 +19,10 @@ item: any;
     this.closeCreatePopup.emit(false);
   }
 
+  
   formData: createSubjectType = {
     name: '',
-    top: null,	
+    top: null
   };
 
 
@@ -34,7 +35,4 @@ item: any;
       this.dataEvent.emit(data.subject);
     });
   }
-
-  
-
 }

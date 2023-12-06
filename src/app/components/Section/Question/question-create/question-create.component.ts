@@ -28,7 +28,7 @@ export class QuestionCreateComponent implements OnInit {
   Medias: Media[] = [];
   typeQuestion: typeof QuestionType = QuestionType;
   @Output() nextToMedia: EventEmitter<boolean> = new EventEmitter<boolean>();
-  require : string = "";
+  require: string = "";
 
   constructor(
     private questionService: QuestionService,
@@ -57,7 +57,7 @@ export class QuestionCreateComponent implements OnInit {
   }
 
   formData: Question = {
-    question: '',
+    question: null,
     numberOfAnswers: null,
     numberOfCorrectAnswers: null,
     questionType: null,
@@ -72,9 +72,13 @@ export class QuestionCreateComponent implements OnInit {
   };
 
   onSubmit() {
-    this.require = "This field is required";
-    this.createAnswer(this.formData);
-    this.nextToMedia.emit(true);
+    if (this.formData.question == null || this.formData.question == null || this.formData.numberOfAnswers == null || this.formData.numberOfCorrectAnswers == null || this.formData.questionType == null || this.formData.points == null || this.formData.time == null || this.formData.level.id == null || this.formData.subject.id == null) {
+      this.require = "This field is required";
+      return;
+    } else {
+      this.createAnswer(this.formData);
+      this.nextToMedia.emit(true);
+    }
   }
 
   openSnackBar(message: string, action: string) {
