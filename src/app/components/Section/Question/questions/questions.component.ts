@@ -3,7 +3,6 @@ import { QuestionService } from './../../../../services/Question/question.servic
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Question } from 'src/app/Models/QuestionType';
 import { Media } from 'src/app/Models/Media';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-questions',

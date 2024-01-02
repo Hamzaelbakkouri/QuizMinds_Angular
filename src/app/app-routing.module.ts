@@ -6,6 +6,8 @@ import { AnswersComponent } from './components/Section/Answer/answers/answers.co
 import { QuestionsComponent } from './components/Section/Question/questions/questions.component';
 import { LevelComponent } from './components/Section/Level/level/level.component';
 import { QuizComponent } from './components/Section/Quiz/quiz/quiz.component';
+import { AllchallengeComponent } from './components/Section/QuizStart/allchallenge/allchallenge.component';
+import { StudentquizsComponent } from './components/Section/QuizStart/studentquizs/studentquizs.component';
 
 // const routes: Routes = [
 //   { path: '', component: ContainerComponent },
@@ -54,6 +56,14 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'quizstart',
+    component: AllchallengeComponent,
+  },
+  {
+    path: 'studentquizs',
+    component: StudentquizsComponent,
+  }
   // {
   //   path: '**',
   //   component: PageNotFoundComponent,

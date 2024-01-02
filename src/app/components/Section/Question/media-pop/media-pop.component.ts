@@ -28,19 +28,19 @@ export class MediaPopComponent {
   formData: Media = {
     src: "https://cdns-images.dzcdn.net/images/cover/9e590d3f568b39f30af61b09f62a2709/264x264.jpg",
     type: MediaType.JPG,
-    question: { id: null },
+    question: { id: 5 },
   };
 
 
   onSubmit() {
-    // this.formData.src = this.image;
-    // this.createMedia(this.formData);
+    this.formData.src = this.image;
+    this.createMedia(this.formData);
     
   }
 
-  // createMedia(media: any): void {
-  //   this.mediaService.save(media).subscribe((data: any) => {
-  //     this.dataEventMedia.emit(data.media);
-  //   });
-  // }
+  createMedia(media: any): void {
+    this.mediaService.save(media).subscribe((data: any) => {
+      this.dataEventMedia.emit(data.media);
+    });
+  }
 }

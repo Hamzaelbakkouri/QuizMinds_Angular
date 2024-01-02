@@ -38,6 +38,10 @@ import { QuizComponent } from './components/Section/Quiz/quiz/quiz.component';
 import { QuizCreateComponent } from './components/Section/Quiz/quiz-create/quiz-create.component';
 import { QuizConfirmComponent } from './components/Section/Quiz/quiz-confirm/quiz-confirm.component';
 import { QuizUpdateComponent } from './components/Section/Quiz/quiz-update/quiz-update.component';
+import { AllchallengeComponent } from './components/Section/QuizStart/allchallenge/allchallenge.component';
+import { QuestionsChallengeComponent } from './components/Section/QuizStart/questions-challenge/questions-challenge.component';
+import { bootstrapCheckCircleFill } from '@ng-icons/bootstrap-icons';
+import { StudentquizsComponent } from './components/Section/QuizStart/studentquizs/studentquizs.component';
 
 @NgModule({
   declarations: [
@@ -66,13 +70,16 @@ import { QuizUpdateComponent } from './components/Section/Quiz/quiz-update/quiz-
     QuizComponent,
     QuizCreateComponent,
     QuizConfirmComponent,
-    QuizUpdateComponent
+    QuizUpdateComponent,
+    AllchallengeComponent,
+    QuestionsChallengeComponent,
+    StudentquizsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgIconsModule.withIcons({ ionBackspaceSharp, ionPencil, bootstrapCalendarCheckFill, bootstrapBell, bootstrapImages }),
+    NgIconsModule.withIcons({ ionBackspaceSharp, ionPencil, bootstrapCalendarCheckFill, bootstrapBell, bootstrapImages, bootstrapCheckCircleFill }),
     FormsModule,
     MatSlideToggleModule,
     MatSnackBarModule,

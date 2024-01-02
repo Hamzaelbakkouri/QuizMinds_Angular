@@ -1,0 +1,21 @@
+<fieldset>
+    <div class="relative -space-y-px rounded-md felx justify-center items-center bg-white p-12">
+        <label *ngFor="let item of assignquiz"
+            class="mb-4 rounded-tl-md rounded-tr-md hover:shadow-inner  relative border p-4 flex  flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none">
+            <span class="flex items-center text-sm">
+                <span id="pricing-plans-0-label" class="ml-3 flex font-semibold gap-4">
+                    <p class="rounded-full font-semibold text-green-500">{{item.id}}/</p> {{item.notes}}
+                </span>
+            </span>
+            <span id="pricing-plans-0-description-0"
+                class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center flex items-center flex-col">
+                <span class="font-semibold text-base">{{item.quiz.teacher?.firstName}}</span>
+                <span class="font-sans">{{item.date}}</span>
+            </span>
+            <div id="pricing-plans-0-description-1" class="flex justify-end items-center">
+                <button (click)="EnterQuiz(item.id)"
+                    class="bg-white text-green-500 hover:bg-green-500 hover:text-white py-2 px-8 rounded-md shadow-md border ">Start</button>
+            </div>
+        </label>
+    </div>
+</fieldset>

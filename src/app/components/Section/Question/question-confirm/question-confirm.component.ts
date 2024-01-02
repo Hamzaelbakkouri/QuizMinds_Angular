@@ -14,7 +14,7 @@ export class QuestionConfirmComponent {
   }
 
   isClosed() {
-    this.closePopup.emit(false);
+    this.closePopup.emit(false);  
   }
 
 }
